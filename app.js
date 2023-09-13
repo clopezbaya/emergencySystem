@@ -14,7 +14,7 @@ class ServerEmergency {
       'localhost',
       'root',
       'yoiner12345',
-      'sakila'
+      'emergencysystem'
     )
     this.app = express()
     this.configEmergency()

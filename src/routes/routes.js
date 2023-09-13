@@ -1,7 +1,7 @@
-const LoginRoutes = require('./login/loginRoutes')
+const UserRoutes = require('./user/UserRoutes')
 
 const routes = (server) => {
-  server.use('/login', new LoginRoutes().route)
+  server.use('/user', new UserRoutes().route)
 }
 
 module.exports = routes

@@ -1,26 +1,25 @@
-const mysql = require('mysql')
+const mysql = require('mysql2/promise')
 
 class MysqlDB {
+  connection
+  db
   host
   user
   pass
-  db
-  connection
   constructor(host, user, pass, db) {
+    this.db = db
     this.host = host
     this.user = user
     this.pass = pass
-    this.db = db
-    this.connection = mysql.createConnection({
-      host: host,
-      user: user,
-      password: pass,
-      database: db,
-    })
   }
 
   start = async () => {
-    await this.connection.connect()
+    this.connection = mysql.createPool({
+      host: this.host,
+      user: this.user,
+      password: this.pass,
+      database: this.db,
+    })
     console.log(`DB ${this.db} connected`)
   }
 

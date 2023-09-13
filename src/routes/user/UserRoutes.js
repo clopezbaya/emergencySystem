@@ -1,7 +1,8 @@
 const express = require('express')
+const UserController = require('../../controller/user/UserController')
 
 const BASE_ROUTE = '/'
-class LoginRoutes {
+class UserRoutes {
   _route
   contractService
 
@@ -15,9 +16,9 @@ class LoginRoutes {
   }
 
   registerRoutes() {
-    this.route.get(BASE_ROUTE, (req, res) => res.send('Hi from Login!!!'))
+    this.route.get(BASE_ROUTE, new UserController().findAllUsers)
     //this.route.post(BASE_ROUTE, ())
   }
 }
 
-module.exports = LoginRoutes
+module.exports = UserRoutes
