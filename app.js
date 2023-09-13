@@ -9,7 +9,7 @@ class ServerEmergency {
   app
   dbConnection
 
-  constructor() {
+  constructor () {
     this.dbConnection = new MysqlDB(
       'localhost',
       'root',
@@ -21,7 +21,7 @@ class ServerEmergency {
     this.startEmergencyDB()
   }
 
-  configEmergency() {
+  configEmergency () {
     this.app.use(cors({ origin: '*' }))
     this.app.use(bodyParser.urlencoded({ extended: true }))
     this.app.use(bodyParser.json())
@@ -30,13 +30,13 @@ class ServerEmergency {
     routes(this.app)
   }
 
-  startServerEmergency() {
+  startServerEmergency () {
     this.app.listen(PORT, () => {
       console.log(`the server is runnig on port: ${PORT}`)
     })
   }
 
-  startEmergencyDB() {
+  startEmergencyDB () {
     this.dbConnection.start()
   }
 }
