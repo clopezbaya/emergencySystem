@@ -17,7 +17,8 @@ class UserRoutes {
 
   registerRoutes() {
     this.route.get(BASE_ROUTE, new UserController().findAllUsers)
-    //this.route.post(BASE_ROUTE, ())
+    this.route.get(`/:userId`, new UserController().findUserById)
+    this.route.post(BASE_ROUTE, new UserController().addNewUser)
   }
 }
 

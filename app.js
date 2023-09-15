@@ -1,7 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const routes = require('./src/routes/routes')
-const MysqlDB = require('./src/DBHandler.js')
 const cors = require('cors')
 
 const PORT = 3000
@@ -10,15 +9,8 @@ class ServerEmergency {
   dbConnection
 
   constructor() {
-    this.dbConnection = new MysqlDB(
-      'localhost',
-      'root',
-      'yoiner12345',
-      'emergencysystem'
-    )
     this.app = express()
     this.configEmergency()
-    this.startEmergencyDB()
   }
 
   configEmergency() {
@@ -34,10 +26,6 @@ class ServerEmergency {
     this.app.listen(PORT, () => {
       console.log(`the server is runnig on port: ${PORT}`)
     })
-  }
-
-  startEmergencyDB() {
-    this.dbConnection.start()
   }
 }
 

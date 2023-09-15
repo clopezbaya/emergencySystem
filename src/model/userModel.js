@@ -1,11 +1,23 @@
 const db = require('../DBHandler')
 
 class userModel {
-  static find = async () => {
+  async find() {
+    const [rows] = await db.query('SELECT * FROM users').then()
+    return rows
+  }
+  async findById(userId) {
     const [rows] = await db
-      .query('SELECT * FROM users')
-      .catch((err) => console.log(err))
-    console.log(rows)
+      .query('SELECT * FROM users WHERE idusers = ?', [userId])
+      .then()
+    return rows
+  }
+  async add(user) {
+    const [rows] = await db
+      .query(
+        'INSERT INTO users(name, speciality, username, password) VALUES (?, ?, ?, ?)',
+        [user.name, user.speciality, user.username, user.password]
+      )
+      .then()
     return rows
   }
 }
