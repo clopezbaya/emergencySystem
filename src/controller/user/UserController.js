@@ -31,6 +31,24 @@ class userController {
       res.sendStatus(500).send(error)
     }
   }
+
+  updateUser = async (req, res) => {
+    try {
+      await new UserModel().update(req.body, req.params.userId)
+      res.status(201).send('Updated Successfully')
+    } catch (error) {
+      res.sendStatus(500).send(error)
+    }
+  }
+
+  deleteUser = async (req, res) => {
+    try {
+      await new UserModel().delete(req.params.userId)
+      res.status(201).send('Deleted Successfully')
+    } catch (error) {
+      res.sendStatus(500).send(error)
+    }
+  }
 }
 
 module.exports = userController

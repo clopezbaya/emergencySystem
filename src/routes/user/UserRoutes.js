@@ -17,8 +17,10 @@ class UserRoutes {
 
   registerRoutes() {
     this.route.get(BASE_ROUTE, new UserController().findAllUsers)
-    this.route.get(`/:userId`, new UserController().findUserById)
+    this.route.get('/:userId', new UserController().findUserById)
     this.route.post(BASE_ROUTE, new UserController().addNewUser)
+    this.route.put('/:userId', new UserController().updateUser)
+    this.route.delete('/:userId', new UserController().deleteUser)
   }
 }
 
